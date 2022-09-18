@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
+import PropTypes  from 'prop-types';
 
-export const AddCategories = ({setCategory}) => {
+
+export const AddCategories = ({setCategory, categories }) => {
+
     const [inputValue, setInputValue] = useState('add');
 
     const handdleAdd = (e) => { //La e es el evento que resive
@@ -9,8 +12,12 @@ export const AddCategories = ({setCategory}) => {
 
     const handdleSumbit = (e) => {
       e.preventDefault();//esto es para cuando de enter no se recarge la pagina
-      setCategory( cat => [...cat, inputValue])//se pueden mandar las categorias pero el setCategories tiene un
-        // codback que tiene la referencia al aterior
+
+      if ( !categories.includes(inputValue) && inputValue !== '' ){
+          setCategory( cat => [...cat, inputValue])//se pueden mandar las categorias pero el setCategories tiene un
+          // codback que tiene la referencia al aterior
+          setInputValue('');
+      }
     }
 
     return (
@@ -20,9 +27,12 @@ export const AddCategories = ({setCategory}) => {
                 value={inputValue}
                 onChange={handdleAdd}
             />
-            <button onClick={handdleSumbit}>Add</button>
+            <button onClick={handdleSumbit} className="btn-accept">Add</button>
         </form>
 
     );
 }
 
+AddCategories.prototype = {
+    setCategory: PropTypes.func.isRequired
+}

@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
 import {AddCategories} from "./Components/AddCategories";
+import {GifGrid} from "./Components/GifGrid";
 
 export const GifExpertApp = () => {
-    const [categories, setCategory] = useState(['risas', 'llantos','gritos']);
+    const [categories, setCategory] = useState(['Ricky and Morty']);
 
     return (
         <>
             <h2>GifExpertApp</h2>
-            <AddCategories setCategory = {setCategory}/>
+            <AddCategories setCategory = {setCategory} categories = {categories} />
             <hr />
             <ol>
                 {
-                    categories.map( cat => {
-                        return <li key={cat}>{cat}</li>
-                    })
+                    categories.map( cat => (
+                         <GifGrid key={cat} categories= {cat} />
+                    ))
                 }
             </ol>
         </>
