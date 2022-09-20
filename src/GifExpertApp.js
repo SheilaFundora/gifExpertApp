@@ -10,6 +10,7 @@ export const GifExpertApp = () => {
             <h2>GifExpertApp</h2>
             <AddCategories setCategory = {setCategory} categories = {categories} />
             <hr />
+            <br />
             <ol>
                 {
                     categories.map( cat => (

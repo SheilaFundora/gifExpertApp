@@ -4,7 +4,7 @@ import PropTypes  from 'prop-types';
 
 export const AddCategories = ({setCategory, categories }) => {
 
-    const [inputValue, setInputValue] = useState('add');
+    const [inputValue, setInputValue] = useState('category');
 
     const handdleAdd = (e) => { //La e es el evento que resive
       setInputValue(e.target.value);
@@ -14,7 +14,7 @@ export const AddCategories = ({setCategory, categories }) => {
       e.preventDefault();//esto es para cuando de enter no se recarge la pagina
 
       if ( !categories.includes(inputValue) && inputValue !== '' ){
-          setCategory( cat => [...cat, inputValue])//se pueden mandar las categorias pero el setCategories tiene un
+          setCategory( cat => [inputValue,...cat])//se pueden mandar las categorias pero el setCategories tiene un
           // codback que tiene la referencia al aterior
           setInputValue('');
       }
@@ -27,7 +27,6 @@ export const AddCategories = ({setCategory, categories }) => {
                 value={inputValue}
                 onChange={handdleAdd}
             />
-            <button onClick={handdleSumbit} className="btn-accept">Add</button>
         </form>
 
     );
