@@ -1,5 +1,5 @@
 import {getGifs} from "../functions/getGifs";
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 
 export const useFetchGif = (categories) => {
